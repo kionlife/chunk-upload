@@ -77,7 +77,7 @@
                         }
                     }).catch(error => {
                         console.error("Error uploading chunk:", error);
-                        if (retryCount < 3) { // Retry up to 3 times
+                        if (retryCount < 120) { // Retry up to 120 times
                             setTimeout(() => {
                                 console.log(`Retrying chunk ${chunkIndex + 1}...`);
                                 document.getElementById('log').innerHTML += `Retrying chunk ${chunkIndex + 1}...<br>`;
