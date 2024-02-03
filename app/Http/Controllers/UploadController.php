@@ -68,4 +68,20 @@ class UploadController extends Controller
 
         return response()->json(['message' => 'Chunk received'], 200);
     }
+
+    public function checkUploadedChunks(Request $request): \Illuminate\Http\JsonResponse
+    {
+        $fileName = $request->input('fileName');
+        $totalChunks = $request->input('totalChunks');
+        $tempDir = storage_path('app/public/chunks/' . $fileName);
+
+        $uploadedChunks = [];
+        for ($i = 0; $i < $totalChunks; $i++) {
+            if (file_exists($tempDir . '/' . $fileName . '.part' . $i)) {
+                $uploadedChunks[] = $i;
+            }
+        }
+
+        return response()->json(['uploadedChunks' => $uploadedChunks]);
+    }
 }

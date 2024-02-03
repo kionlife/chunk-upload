@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::post('/upload', [UploadController::class, 'upload']);
+Route::post('/upload/check', [UploadController::class, 'checkUploadedChunks']);
