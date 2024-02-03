@@ -23,6 +23,11 @@
             </div>
         </div>
         <script>
+
+            /*
+            * Default chunk size is 1MB
+            * Retry up to 3 times
+            * */
             function uploadFile(file, url, chunkSize = 1 * 1024 * 1024) { // Default chunk size is 1MB
                 let start = 0;
                 const totalSize = file.size;
